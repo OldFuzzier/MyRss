@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css') }}" />
+</head>
+<body>
+
+
+<header>
+        <h1>我的RSS集合器</h1>
+    </header>
+    <div id="container">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.v_about_me') }}">About me</a></li>
+                <li><a href="/aboutRSS">About the RSS</a></li>
+                {% if 'user_id' in session %}
+                    <li><a href="{{ url_for('auth.v_logout') }}">{{ session.user_name }} Sign out</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('auth.v_login') }}">Sign in</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <article>
+            <h2><a href="{{ url_for('crawler.v_douban') }}">豆瓣最新上架图书</a></h2>
+            <p>里面主要罗列出豆瓣上新出的图书和相关信息介绍</p>
+        </article>
+        <article>
+            <h2><a href="{{ url_for('crawler.v_damai') }}">大麦网上新出的各种演出票</a></h2>
+            <p>里面主要罗列出大麦网上的票，日期，价格等</p>
+        </article>
+        <article>
+            <h2><a href="{{ url_for('crawler.v_dy2018') }}">电影天堂新出电影</a></h2>
+            <p>里面主要罗列出最新可供下载的电影</p>
+        </article>
+        <section>
+            <li><b><a href="{{ url_for('auth.v_login') }}">Login</a></b></li>
+            <li><b><a href="{{ url_for('auth.v_register') }}">Register</a></b></li>
+            {% if 'user_id' in session %}
+                <li><b><a href="{{ url_for('comment.v_post') }}">Comment</a></b></li>
+            {% else %}
+                <li><b><a href="{{ url_for('auth.v_login') }}">Comment but need Login</a></b></li>
+            {% endif %}
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2017 fuzzier</p>
+    </footer>
+</body>
+</html>
