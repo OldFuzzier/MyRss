@@ -7,6 +7,7 @@ from damai import main_damai
 from douban import main_douban
 from dy2018 import main_dy2018
 
+
 @crawler.route('/douban_recent')
 def v_douban():
     try:
@@ -15,6 +16,7 @@ def v_douban():
     except:
         return render_template('404.html'), 404
 
+
 @crawler.route('/damai_recent')
 def v_damai():
     try:
@@ -22,6 +24,7 @@ def v_damai():
         return render_template('damai.html', info_lst=info_lst)
     except:
         return render_template('404.html'), 404
+
 
 @crawler.route('/dy2018_recent')
 def v_dy2018():

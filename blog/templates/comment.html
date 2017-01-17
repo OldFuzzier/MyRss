@@ -21,9 +21,15 @@
                 {% endif %}
             </ul>
         </nav>
+        {% if 'user_id' in session %}
         <section>
             {{ wtf.quick_form(form) }}
         </section>
+        {% else %}
+        <section>
+            <p><a>You must login before enter</a></p>
+        </section>
+        {% endif %}
     </div>
     <footer>
         <p>&copy; 2017 fuzzier</p>

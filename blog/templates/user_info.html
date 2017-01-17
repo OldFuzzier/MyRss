@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UserInfo</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css') }}" />
+</head>
+<body>
+    <header>
+        {% if 'user_id' in session %}
+        <h1>{{ user.username }}</h1>
+        {% else %}
+        <h1>No User</h1>
+        {% endif %}
+    </header>
+    <div id="container">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('main.v_index') }}">Home</a></li>
+                {% if 'user_id' in session %}
+                <li><a href="/user_info/{{ session['user_id'] }}">{{ session['user_name'] }}</a></li>
+                <li><a href="{{ url_for('auth.v_logout') }}">Sign Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.v_login') }}">Sign in</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% if 'user_id' in session %}
+            {% for user_comment in user_comment_lst %}
+            <article>
+                <h2>{{ user_comment.theme }}</h2>
+                <textarea  rows="10" cols="50">{{ user_comment.body }}</textarea>
+                <p><b>{{ user_comment.created }}</b></p>
+            </article>
+            {% endfor %}
+        {% else %}
+            <article>
+                <p><a>You must login before enter</a></p>
+            </article>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; 2017 fuzzier</p>
+    </footer>
+</body>
+</html>

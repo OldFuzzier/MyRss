@@ -17,9 +17,10 @@
                 <li><a href="{{ url_for('main.v_about_me') }}">About me</a></li>
                 <li><a href="/aboutRSS">About the RSS</a></li>
                 {% if 'user_id' in session %}
-                    <li><a href="{{ url_for('auth.v_logout') }}">{{ session.user_name }} Sign out</a></li>
+                <li><a href="/user_info/{{ session['user_id'] }}">{{ session['user_name'] }}</a></li>
+                <li><a href="{{ url_for('auth.v_logout') }}">Sign Out</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('auth.v_login') }}">Sign in</a></li>
+                <li><a href="{{ url_for('auth.v_login') }}">Sign in</a></li>
                 {% endif %}
             </ul>
         </nav>

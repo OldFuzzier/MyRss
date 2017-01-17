@@ -15,20 +15,21 @@ User = model.User
 Comment = model.Comment
 
 
-@comment.route('/comment/post', methods=['POST', 'GET'])
+@comment.route('/post', methods=['POST', 'GET'])
 def v_post():
     form = CommentForm()
     if request.method == 'POST':
         c = Comment(theme=form.theme.data, body=form.body.data, user_id=session['user_id'])
-        db.seesion.add(c)
+        db.session.add(c)
         db.session.commit()
         return redirect('/')
     return render_template('comment.html', form=form)
 
+
 # @login_required 检查用户是否登录
-@comment.route('/edit/<int:id>', methods=['POST', 'GET'])
-def v_edit(id):
-    post = User.search(id)
+@comment.route('/edit/<int:uid>', methods=['POST', 'GET'])
+def v_edit(uid):
+    post = User.search(uid)
     if request.method == 'POST':
         post.title = request.form['title']
         post.body = request.form['body']
