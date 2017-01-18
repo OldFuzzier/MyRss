@@ -21,6 +21,10 @@ def v_index():
 def v_about_me():
     return render_template('about_me.html')
 
+@main.route('/about_RSS')
+def v_about_rss():
+    return render_template('about_rss.html')
+
 
 @main.route('/user_info/<user_id>')
 def v_user_info(user_id):

@@ -6,6 +6,7 @@
 import os
 from flask import Flask
 from flask_bootstrap import Bootstrap
+from flaskext.markdown import Markdown
 #from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
 
@@ -31,13 +32,14 @@ login_manager.login_view = 'auth.v_login'  # 设置默认的登录函数
 db = SQLAlchemy(app)
 #login_manager.init_app(app)
 bootstrap = Bootstrap(app)
+Markdown(app)
 # manager = Manager(app)
 
 # 注册蓝图
 from main import main as main_blueprint
 app.register_blueprint(main_blueprint)
 from crawler import crawler as crawler_blueprint
-app.register_blueprint(crawler_blueprint)
+app.register_blueprint(crawler_blueprint, url_prefix='/crawler')
 from comment import comment as comment_blueprint
 app.register_blueprint(comment_blueprint, url_prefix='/comment')
 from auth import auth as auth_blueprint
