@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 
 from .import comment
-from flask import request, render_template, redirect, url_for, render_template_string, session
+from flask import request, render_template, redirect, session
 import os
 import sys
 from form import CommentForm
 #导入上级目录的文件
 out = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(out)
-import app2, model
+import app2, model, my_login
 db = app2.db
 User = model.User
 Comment = model.Comment

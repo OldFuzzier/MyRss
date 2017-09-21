@@ -7,7 +7,7 @@ import os
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flaskext.markdown import Markdown
-#from flask_script import Manager
+# from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
 
 # 定义全局变量
@@ -30,7 +30,7 @@ login_manager.login_view = 'auth.v_login'  # 设置默认的登录函数
 
 # 初始化插件
 db = SQLAlchemy(app)
-#login_manager.init_app(app)
+# login_manager.init_app(app)
 bootstrap = Bootstrap(app)
 Markdown(app)
 # manager = Manager(app)

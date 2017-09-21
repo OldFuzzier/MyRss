@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-from flask import render_template, request, redirect, url_for, flash, session
+from flask import render_template, redirect, url_for, flash, session
 from . import auth
 from form import LoginForm, RegistrationForm
 out = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(out)
 from my_login import login_user, logout_user, login_required
-#from flask_login import login_required
+# from flask_login import login_required
 import app2, model
 db = app2.db
 login_manager = app2.login_manager

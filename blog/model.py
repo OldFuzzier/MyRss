@@ -14,15 +14,18 @@ class User(db.Model):
     password_hash = db.Column(db.String(128))
     created = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     comments = db.relationship('Comment', backref='users')
+
     # 该函数是password只有只写属性，如果被读则直接报错
     @property
     def password(self):
         raise AttributeError('password is not a readable attribute')
     # 该函数用于当password被创建时，会被自动set成加密后的password
+
     @password.setter
     def password(self, password):
         self.password_hash = generate_password_hash(password)
     # 该函数用检测password与password_hash的值是否相同
+
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 

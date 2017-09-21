@@ -13,7 +13,7 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('main.v_about_me') }}">About me</a></li>
-                <li><a href="/aboutRSS">About the RSS</a></li>
+                <li><a href="{{ url_for('main.v_about_rss') }}">About the RSS</a></li>
                 {% if 'user_id' in session %}
                 <li><a href="/user_info/{{ session['user_id'] }}">{{ session['user_name'] }}</a></li>
                 <li><a href="{{ url_for('auth.v_logout') }}">Sign Out</a></li>

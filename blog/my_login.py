@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-'''
-该模块功能类似于flask_login
-'''
-from flask import url_for, session, request
+
+# 该模块功能类似于flask_login
+
+from flask import url_for, session
 
 
 class LoginManager(object):

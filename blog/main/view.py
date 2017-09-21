@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from flask import render_template, session, request, make_response, url_for, redirect, abort
+from flask import render_template
 from . import main
 import os
 import sys
 out = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(out)
-import app2  #注意导入app2与model的先后顺序，一定这么做否则报错
+import app2  # 注意导入app2与model的先后顺序，一定这么做否则报错 (注意！)
 import model
 User = model.User
 Comment = model.Comment
@@ -20,6 +20,7 @@ def v_index():
 @main.route('/about_me')
 def v_about_me():
     return render_template('about_me.html')
+
 
 @main.route('/about_RSS')
 def v_about_rss():
