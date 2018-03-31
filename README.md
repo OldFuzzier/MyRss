@@ -10,5 +10,7 @@ __question__: if I only import model, the program will report error which like t
 __method__: the order of import add2, model
 
 # UI:
-![RSS icon](http://images2015.cnblogs.com/blog/1035163/201701/1035163-20170119111011343-912472282.jpg)
+<img src="/rss/static/main_page.PNG" width="80%" height="28%" />
+
+<img src="/rss/static/detail_page.PNG" width="80%" height="28%" />
   

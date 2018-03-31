@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>films</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css') }}" />
+</head>
+<body>
+    <header>
+        <h1>电影天堂最新电影</h1>
+    </header>
+    <div id="container">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+            </ul>
+        </nav>
+        {% for info in info_lst %}
+        <article>
+            <h2>{{ info[0] }}</h2>
+            <p>影片详细信息和下载地址: <a href="{{ info[1] }}">点击这里可进入</a></p>
+        </article>
+        {% endfor %}
+    </div>
+    <footer>
+        <p>&copy; 2017 fuzzier</p>
+    </footer>
+</body>
+</html>

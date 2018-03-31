@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css') }}" />
+    {% import "bootstrap/wtf.html" as wtf %}
+</head>
+<body>
+    <header>
+        <h1>Comment</h1>
+    </header>
+    <div id="container">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.v_index') }}">Home</a></li>
+                {% if 'user_id' in session %}
+                <li><a href="{{ url_for('auth.v_logout') }}">{{ session['user_name'] }} Sign Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.v_login') }}">Sign in</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% if 'user_id' in session %}
+        <section>
+            {{ wtf.quick_form(form) }}
+        </section>
+        {% else %}
+        <section>
+            <p><a>You must login before enter</a></p>
+        </section>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; 2017 fuzzier</p>
+    </footer>
+</body>
+</html>

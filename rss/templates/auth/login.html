@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% import "bootstrap/wtf.html" as wtf %}
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css') }}" />
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</head>
+<body>
+    <header>
+        <h1>登录</h1>
+    </header>
+    <div id="container">
+        <nav>
+            <ul>
+                <li><b><a href="/">Home</a></b></li>
+            </ul>
+        </nav>
+        <section>
+            {{ wtf.quick_form(form) }}
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2017 fuzzier</p>
+    </footer>
+</body>
+</html>
